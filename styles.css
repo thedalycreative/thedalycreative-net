@@ -1171,6 +1171,9 @@ section {
 .showcase-preview {
 	position: relative;
 	overflow: hidden;
+	background: #f0f0f0;
+	display: flex;
+	flex-direction: column;
 }
 
 .browser-bar {
@@ -1178,8 +1181,9 @@ section {
 	align-items: center;
 	gap: 6px;
 	padding: 10px 16px;
-	background: rgba(0, 0, 0, 0.06);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	background: #e8e8e8;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+	flex-shrink: 0;
 }
 
 .browser-dot {
@@ -1187,12 +1191,49 @@ section {
 	height: 10px;
 	border-radius: 50%;
 	background: rgba(0, 0, 0, 0.12);
+	flex-shrink: 0;
 }
 
 .browser-dot:nth-child(1) { background: #ff5f57; }
 .browser-dot:nth-child(2) { background: #febc2e; }
 .browser-dot:nth-child(3) { background: #28c840; }
 
+.browser-url {
+	margin-left: 8px;
+	padding: 4px 12px;
+	background: #ffffff;
+	border-radius: 6px;
+	font-size: 0.75rem;
+	color: var(--slate);
+	font-family: "Space Grotesk", sans-serif;
+	flex: 1;
+	max-width: 260px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Screenshot-based preview */
+.preview-screenshot {
+	flex: 1;
+	overflow: hidden;
+	position: relative;
+}
+
+.preview-screenshot img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top center;
+	display: block;
+	transition: transform 6s ease;
+}
+
+.project-showcase:hover .preview-screenshot img {
+	transform: translateY(-10%);
+}
+
+/* Legacy icon-based preview area (kept for fallback) */
 .preview-area {
 	height: 100%;
 	display: flex;
@@ -2777,6 +2818,7 @@ footer {
 
 	.showcase-preview {
 		min-height: 280px;
+		max-height: 360px;
 	}
 
 	.consulting-brands {
